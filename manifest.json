@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Job Application Autofill",
+  "version": "1.0",
+  "description": "Automatically fills job application forms using OpenAI API and user context",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "*://*.linkedin.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    },
+    {
+      "matches": ["*://*.linkedin.com/jobs/*"],
+      "js": ["linkedin-content.js"],
+      "css": ["linkedin-styles.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["*.svg", "styles.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

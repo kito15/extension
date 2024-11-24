@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Application Autofill</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1><i class="fas fa-briefcase"></i> Job Application Autofill</h1>
+    
+    <div class="tab-nav">
+      <button class="tab-button active" data-tab="personal">Personal</button>
+      <button class="tab-button" data-tab="contact">Contact</button>
+      <button class="tab-button" data-tab="professional">Professional</button>
+      <button class="tab-button" data-tab="additional">Additional</button>
+      <button class="tab-button" data-tab="resume">Resume</button>
+    </div>
+
+    <form id="userInfoForm">
+      <div class="tab-content active" data-tab="personal">
+        <!-- Name and Gender -->
+        <div class="form-grid">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name"><i class="fas fa-user"></i> Full Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="gender"><i class="fas fa-venus-mars"></i> Gender</label>
+              <select id="gender" name="gender">
+                <option value="">Prefer not to say</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Non-binary">Non-binary</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" data-tab="contact">
+        <!-- Email, Phone, Location -->
+        <div class="form-grid">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope"></i> Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone"><i class="fas fa-phone"></i> Phone</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="location"><i class="fas fa-map-marker-alt"></i> Location</label>
+              <input type="text" id="location" name="location" required>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" data-tab="professional">
+        <!-- Education, Work, URLs -->
+        <div class="form-grid">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="education"><i class="fas fa-graduation-cap"></i> Education</label>
+              <input type="text" id="education" name="education" required>
+            </div>
+            <div class="form-group">
+              <label for="currentCompany"><i class="fas fa-building"></i> Current Company</label>
+              <input type="text" id="currentCompany" name="currentCompany">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="linkedinUrl"><i class="fab fa-linkedin"></i> LinkedIn URL</label>
+              <input type="url" id="linkedinUrl" name="linkedinUrl">
+            </div>
+            <div class="form-group">
+              <label for="portfolioUrl"><i class="fas fa-globe"></i> Portfolio URL</label>
+              <input type="url" id="portfolioUrl" name="portfolioUrl">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" data-tab="additional">
+        <!-- Demographics -->
+        <div class="form-grid">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="race"><i class="fas fa-users"></i> Race</label>
+              <select id="race" name="race">
+                <option value="">Prefer not to say</option>
+                <option value="White">White</option>
+                <option value="Black or African American">Black or African American</option>
+                <option value="Asian">Asian</option>
+                <option value="Hispanic or Latino">Hispanic or Latino</option>
+                <option value="Native American or Alaska Native">Native American or Alaska Native</option>
+                <option value="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
+                <option value="Two or More Races">Two or More Races</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="veteranStatus"><i class="fas fa-medal"></i> Veteran Status</label>
+              <select id="veteranStatus" name="veteranStatus">
+                <option value="">Prefer not to say</option>
+                <option value="Not a veteran">Not a veteran</option>
+                <option value="Veteran">Veteran</option>
+                <option value="Protected veteran">Protected veteran</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="workAuthorization"><i class="fas fa-id-card"></i> Work Authorization</label>
+              <select id="workAuthorization" name="workAuthorization">
+                <option value="">Prefer not to say</option>
+                <option value="US Citizen">US Citizen</option>
+                <option value="Permanent Resident">Permanent Resident</option>
+                <option value="Work Visa">Work Visa</option>
+                <option value="Need Sponsorship">Need Sponsorship</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" data-tab="resume">
+        <div class="form-grid">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="resumeFile"><i class="fas fa-file-alt"></i> Upload HTML Resume</label>
+              <input type="file" id="resumeFile" name="resumeFile" accept=".html,.htm">
+              <div id="resumePreview" class="resume-preview"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button type="button" class="nav-button secondary" id="prevBtn" style="display: none;">
+          <i class="fas fa-arrow-left"></i> Previous
+        </button>
+        <button type="button" class="nav-button" id="nextBtn">
+          Next <i class="fas fa-arrow-right"></i>
+        </button>
+        <button type="submit" id="saveBtn">
+          <i class="fas fa-save"></i> Save Information
+        </button>
+      </div>
+    </form>
+
+    <div class="progress-indicator">
+      <div class="progress-dot active"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+    </div>
+
+    <button id="autofillBtn"><i class="fas fa-magic"></i> Autofill Form</button>
+    <div id="status"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
